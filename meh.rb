@@ -1,6 +1,6 @@
 # meh.rb
 require 'sinatra'
 
-get '/orders/create' do
-  'Meh'
+post '/orders/create' do
+  params.to_s
 end
