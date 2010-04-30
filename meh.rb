@@ -1,6 +1,6 @@
 # meh.rb
 require 'sinatra'
 
-get 'orders/create' do
+get '/orders/create' do
   'Meh'
 end
