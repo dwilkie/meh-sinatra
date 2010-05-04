@@ -1,4 +1,8 @@
 # meh.rb
+
+require "bundler"
+Bundler.setup
+
 require 'sinatra'
 
 require 'mail'
@@ -18,8 +22,8 @@ post '/orders/create' do
   BODY = params.to_s
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
-    from 'dwilkie@gmail.com'
-    subject ENV['EMAIL_ADDRESS']
+    from ENV['EMAIL_ADDRESS']
+    subject 'meh'
     body BODY
   end
 end
