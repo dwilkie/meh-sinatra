@@ -19,12 +19,12 @@ Mail.defaults do
 end
 
 post '/orders/create' do
-  BODY = params.to_s
+  request_string = request.inspect
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
     from ENV['EMAIL_ADDRESS']
     subject 'meh'
-    body BODY
+    body request_string
   end
 end
 
