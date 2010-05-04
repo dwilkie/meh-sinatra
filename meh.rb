@@ -4,6 +4,8 @@ require "bundler"
 Bundler.setup
 
 require 'sinatra'
+#require 'ruby-debug'
+#require 'ebay'
 
 require 'mail'
 options = { :address              => "smtp.gmail.com",
@@ -19,7 +21,8 @@ Mail.defaults do
 end
 
 post '/orders/create' do
-  request_string = request.inspect
+  request_string = request.env["rack.input"].read
+  #Ebay::Notification.new(request_string)
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
     from ENV['EMAIL_ADDRESS']
