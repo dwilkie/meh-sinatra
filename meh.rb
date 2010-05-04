@@ -21,13 +21,13 @@ Mail.defaults do
 end
 
 post '/orders/create' do
-  request_string = request.env["rack.input"].read
+  request_body = request.body.read
   #Ebay::Notification.new(request_string)
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
     from ENV['EMAIL_ADDRESS']
     subject 'meh'
-    body request_string
+    body request_body
   end
 end
 
