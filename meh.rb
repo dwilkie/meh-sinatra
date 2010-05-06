@@ -22,7 +22,6 @@ end
 
 post '/orders/create' do
   request_body = request.body.read
-  #Ebay::Notification.new(request_string)
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
     from ENV['EMAIL_ADDRESS']
@@ -31,3 +30,12 @@ post '/orders/create' do
   end
 end
 
+post '/payment_notifications/create' do
+  request_body = params.to_s
+  Mail.deliver do
+    to ENV['EMAIL_ADDRESS']
+    from ENV['EMAIL_ADDRESS']
+    subject 'paypal notification'
+    body request_body
+  end
+end
