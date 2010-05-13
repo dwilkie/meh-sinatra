@@ -51,11 +51,4 @@ get '/incoming_text_messages/create' do
 end
 
 get '/text_message_delivery_reports/create' do
-  request_body = params.to_s
-  Mail.deliver do
-    to ENV['EMAIL_ADDRESS']
-    from ENV['EMAIL_ADDRESS']
-    subject 'delivery report'
-    body request_body
-  end
 end
