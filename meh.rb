@@ -40,7 +40,7 @@ post '/payment_notifications/create' do
   end
 end
 
-get '/incoming_text_message/create' do
+get '/incoming_text_messages/create' do
   request_body = params.to_s
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
@@ -50,12 +50,12 @@ get '/incoming_text_message/create' do
   end
 end
 
-get '/text_message_delivery_report/create' do
+get '/text_message_delivery_reports/create' do
   request_body = params.to_s
   Mail.deliver do
     to ENV['EMAIL_ADDRESS']
     from ENV['EMAIL_ADDRESS']
-    subject 'incoming text message'
+    subject 'delivery report'
     body request_body
   end
 end
