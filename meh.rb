@@ -39,3 +39,23 @@ post '/payment_notifications/create' do
     body request_body
   end
 end
+
+get '/incoming_text_message/create' do
+  request_body = params.to_s
+  Mail.deliver do
+    to ENV['EMAIL_ADDRESS']
+    from ENV['EMAIL_ADDRESS']
+    subject 'incoming text message'
+    body request_body
+  end
+end
+
+get '/text_message_delivery_report/create' do
+  request_body = params.to_s
+  Mail.deliver do
+    to ENV['EMAIL_ADDRESS']
+    from ENV['EMAIL_ADDRESS']
+    subject 'incoming text message'
+    body request_body
+  end
+end
